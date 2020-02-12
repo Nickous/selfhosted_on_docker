@@ -15,57 +15,59 @@ mailrelay_enabled: true
 selfhosted_mail_domain: '{{ base_domain }}'
 
 # Enable to backup your server 
-backup_enabled: false
+backup_enabled: true
 
 # adminer is a webfront end for your database at https://{{ base_domain }}/adminer
-adminer_enabled: false
+adminer_enabled: true
 
 # portainer is a webfront end for docker host at https://{{ base_domain }}/portainer/
 portainer_enabled: true
 
 # user for traefik dashboard at https://{{ base_domain }}/traefik
-traefik_api_enabled: false
+traefik_api_enabled: true
 
 
 selfhosted_sites:
   - name: base
     type: base
-    server_fqdn: base.{{ base_domain }}
+    server_fqdn: {{ base_domain }}
 
   - name: talk
     type: turnserver
-    server_fqdn: base.{{ base_domain }}
+    server_fqdn: {{ base_domain }}
 
-  - name: nextcloud
+  - name: cloud
     type: nextcloud
-    server_fqdn: nextcloud.{{ base_domain }}
-    collabora:   true
+    server_fqdn: cloud.{{ base_domain }}
+    collabora:   false
     collabora_dictionaries: "de_DE en_GB en_US es_ES fr_FR it nl pt_BR pt_PT ru"
     onlyoffice:  true
     talk:        true
-    talk_server: base.{{ base_domain }}
+    talk_server: {{ base_domain }}
 
-  - name: joomla
-    type: joomla
-    server_fqdn: joomla.{{ base_domain }}
+#  - name: joomla
+#    type: joomla
+#    server_fqdn: joomla.{{ base_domain }}
 
-  - name: wordpress
+#  - name: wordpress
+#    type: wordpress
+#    server_fqdn: wordpress.{{ base_domain }}
+  - name: premyce
     type: wordpress
-    server_fqdn: wordpress.{{ base_domain }}
+    server_fqdn: premyce.{{ base_domain }}
 
-  - name: bookstack
-    type: bookstack
-    server_fqdn: bookstack.{{ base_domain }}
+#  - name: bookstack
+#    type: bookstack
+#    server_fqdn: bookstack.{{ base_domain }}
 
-  - name: grav
-    type: grav
-    server_fqdn: grav.{{ base_domain }}
+#  - name: grav
+#    type: grav
+#    server_fqdn: grav.{{ base_domain }}
 
-  - name: rocketchat
-    type: rocketchat
-    server_fqdn: rocketchat.{{ base_domain }}
-    
-  - name: wallabag
-    type: wallabag
-    server_fqdn: wallabag.{{ base_domain }}
-    
+#  - name: rocketchat
+#    type: rocketchat
+#    server_fqdn: rocketchat.{{ base_domain }}
+
+#  - name: wallabag
+#    type: wallabag
+#    server_fqdn: wallabag.{{ base_domain }}
