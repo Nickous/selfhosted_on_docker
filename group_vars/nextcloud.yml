@@ -28,7 +28,7 @@ app_www_dir:                      '{{ app_base_dir }}/www'
 app_config_dir:                   '{{ app_base_dir }}/config'
 app_datadump_dir:                 '{{ app_base_dir }}/database_dump'
 
-app_container_data_dir:           '/var/nc-data'
+app_container_data_dir:           '/var/{{ app_name }}-data'
 
 # admin user
 app_admin:                        'admin'
@@ -39,8 +39,8 @@ app_collabora_admin:              'admin'
 app_collabora_passwd:             ''              # leave empty to generate random password stored in /{{ selfhosted_base_dir }}/secrets
 
 # database settings (choose one)
-app_db_type:                      'pgsql'        # (PostgreSQL)
-# app_db_type:                    'mysql'        # (MariaDB)
+# app_db_type:                    'pgsql'         # (PostgreSQL)
+app_db_type:                      'mysql'         # (MariaDB)
 # app_db_type:                    'sqlite'        # (SQLite)
 
 # options for mariadb or postgres
