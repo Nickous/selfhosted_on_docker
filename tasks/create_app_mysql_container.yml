@@ -37,5 +37,5 @@
     port: "3306"
     state: started
     delay: 5
-    connect_timeout: 15
-    timeout: 30
+    connect_timeout: 60
+    timeout: 120
