@@ -1,5 +1,5 @@
 ---
-# tasks file to start joomla container
+# tasks file to start wordpress container
 
 - name: '{{ app_name }} | create wordpress container'
   docker_container:
