@@ -18,7 +18,7 @@
     networks:       [ name: "{{ app_name }}" ]
     purge_networks: true
     volumes:        
-                    '{{ app_docker_vol }}'
+                    - "{{ app_data_dir }}:/var/www/html" #replaced '{{ app_docker_vol }}' otherwise Syntax error when run ./prepare_site.yml
                     - "{{ app_config_dir }}/php.ini:/usr/local/etc/php/conf.d/php.ini
     env:            '{{ app_docker_env[app_db_type] }}'
     labels:         '{{ app_docker_labels }}'
