@@ -9,9 +9,9 @@ app_docker_postgres_image:  '11-alpine'
 app_docker_mysql_image:     '{{ docker_default_mysql_image }}'
 
 # Enable/disable auto container updates via watchtower
-app_watchtower:             'false'
-app_db_watchtower:          'false'
-app_nginx_watchtower:       'false'
+app_watchtower:             'true'
+app_db_watchtower:          'true'
+app_nginx_watchtower:       'true'
 
 # data dir
 app_base_dir:               '{{ selfhosted_base_dir }}/{{ app_name }}'
