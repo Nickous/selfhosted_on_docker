@@ -1,6 +1,6 @@
 ---
 # tasks file for docker_wordpress
-# start all needed joomla container
+# start all needed wordpress ontainer
 
 - name: '{{ app_name }} | include vars'
   include_vars: "{{ item }}"
