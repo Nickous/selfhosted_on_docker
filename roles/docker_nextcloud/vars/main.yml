@@ -46,7 +46,7 @@ backup_script_block: |
     
     # backup the database
     {% if app_db_type == 'mysql' %}
-    sudo docker exec {{ app_name }}-db mysqldump --single-transaction -h localhost -u {{ app_db_user }} -p{{ app_db_passwd }} {{ app_db_name }} > {{ app_datadump_dir }}/db_dump_{{ app_db_type }}_nextcloud.sql
+    sudo docker exec {{ app_name }}-db mysqldump --single-transaction -h localhost -u {{ app_db_user }} -p{{ lookup('password', '{{ selfhosted_credential_store }}/{{ app_name }}_database_user_secret chars=ascii_letters,digits length=32') }} {{ app_db_name }} > {{ app_datadump_dir }}/db_dump_{{ app_db_type }}_nextcloud.sql
     {% elif app_db_type == 'pgsql' %}
     sudo docker exec {{ app_name }}-db pg_dump -c -U {{ app_db_user }} {{ app_db_name }} > {{ app_datadump_dir }}/db_dump_{{ app_db_type }}_nextcloud.sql
     {% endif %}
