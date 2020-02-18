@@ -1,6 +1,14 @@
 ---
 # tasks file to start wordpress container
 
+- name: '{{ app_name }} | copy php.ini to {{ app_config_dir }}'
+  copy:
+    src:  "php.ini"
+    dest: "{{ app_config_dir }}/php.ini"
+    owner: "82"
+    group: "82"
+    mode: 0644
+
 - name: '{{ app_name }} | create wordpress container'
   docker_container:
     name:           '{{ app_name }}'
@@ -9,6 +17,8 @@
     links:          '{{ app_name }}-db:db'
     networks:       [ name: "{{ app_name }}" ]
     purge_networks: true
-    volumes:        '{{ app_docker_vol }}'
+    volumes:        
+                    '{{ app_docker_vol }}'
+                    - "{{ app_config_dir }}/php.ini:/usr/local/etc/php/conf.d/php.ini
     env:            '{{ app_docker_env[app_db_type] }}'
     labels:         '{{ app_docker_labels }}'
