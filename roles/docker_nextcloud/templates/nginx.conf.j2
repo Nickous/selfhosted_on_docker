@@ -134,8 +134,12 @@ http {
         location = /.well-known/caldav {
             return 301 $scheme://$host/remote.php/dav;
         }
+        location = /.well-known/webfinger {
+		    return 301 $scheme://$host/public.php?service=webfinger;
+	    }
+        
         # Remove X-Powered-By, which is an information leak
-       fastcgi_hide_header X-Powered-By;
+        fastcgi_hide_header X-Powered-By;
 
         # set max upload size
         client_max_body_size 10G;
